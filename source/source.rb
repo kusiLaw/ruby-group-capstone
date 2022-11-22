@@ -7,4 +7,18 @@ class Source
         @name = name
         @items = []
     end    
+
+        end
+
+    def add_item(item)
+        @items << item unless @items.include?(item)
+        item.source = self
+    end
+
+    def self.list_all_sources(sources)
+      puts 'No sources found in Database.' if sources.empty?
+        sources.each do |source|
+            puts "Source Name: #{source.name}"
+        end
+    end
 end
