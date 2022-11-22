@@ -1,13 +1,13 @@
 require './item'
 class Movie < Item
-    def initialize( *all, silent)
-        super(*all)
-        @silent = false
+  def initialize(*all, _silent)
+    super(*all)
+    @silent = false
+  end
 
-    end
-    private
+  private
 
-    def can_be_archived?
-        super || @silent
-    end
+  def can_be_archived?
+    super || @silent
+  end
 end
