@@ -1,7 +1,7 @@
 require './item'
 class Movie < Item
-  def initialize(*all, _silent)
-    super(*all)
+  def initialize(date, _silent)
+    super(date)
     @silent = false
   end
 
