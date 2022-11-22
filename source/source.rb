@@ -1,24 +1,14 @@
-require 'securerandom'
 class Source
-    attr_accessor :id, :name
-    attr_reader :items
-    def initialize(name)
-        @id = SecureRandom.random_number(1000)
-        @name = name
-        @items = []
-    end    
+  attr_accessor :name
+  attr_reader :items, :id
 
-        end
+  def initialize(name)
+    @name = name
+    @id = Random.rand(400...1000)
+  end
 
-    def add_item(item)
-        @items << item unless @items.include?(item)
-        item.source = self
-    end
-
-    def self.list_all_sources(sources)
-      puts 'No sources found in Database.' if sources.empty?
-        sources.each do |source|
-            puts "Source Name: #{source.name}"
-        end
-    end
+  def add_item(item)
+    @items << item
+    item.source = self unless item.source == self
+  end
 end

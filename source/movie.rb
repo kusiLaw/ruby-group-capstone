@@ -1,19 +1,13 @@
-class Movie
-    def initialize(*args, silet)
-        super(*args)
-        @silet = false
+require './item'
+class Movie < Item
+    def initialize( *all, silent)
+        super(*all)
+        @silent = false
 
-    end
-
-    def self.lits_all_movies(movies)
-       puts 'Sorry No mivies found, please add a movie.' if movies.empty?
-        movies.each do |movie|
-            puts "Name: #{movie.name} Author: #{movie.author} Genre: #{movie.genre} "
-        end    
     end
     private
 
     def can_be_archived?
-        super || @silet
+        super || @silent
     end
 end

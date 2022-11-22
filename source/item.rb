@@ -4,24 +4,30 @@ class Item
   attr_accessor :date, :archived
   attr_reader :genre, :author, :source, :label
 
-  def initialize(genre, author, source, label, date)
+  def initialize(date)
     @id = Random.rand(1..1000)
-
-    @genre = genre
-    genre.items << self
-
-    @author = author
-    author.items << self
-
-    @source = source
-    source.items << self
-
-    @label = label
-    label.items << self
-
     @date = Date.parse(date)
-
     @archived = false
+  end
+
+  def genre=(genre)
+    @genre = genre
+    genre.items << self unless genre.items.include?(self)
+  end
+
+  def author=(author)
+    @author = author
+    author.items << self unless author.items.include?(self)
+  end
+
+  def source=(source)
+    @source = source
+    source.items << self unless source.items.include?(self)
+  end
+
+  def label=(label)
+    @label = label
+    label.items << self unless label.items.include?(self)
   end
 
   def can_be_archived?
