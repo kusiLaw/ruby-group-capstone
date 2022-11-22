@@ -4,7 +4,7 @@ class Source
 
     def initialize(name)
         @name = name
-        @id = Random.rand(4000...5000000)
+        @id = Random.rand(400...1000)
     end
 
     def add_item(item)
