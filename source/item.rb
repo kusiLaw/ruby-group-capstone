@@ -31,7 +31,7 @@ class Item
   end
 
   def can_be_archived?
-    Date.today - @date > 3650
+    Date.today - @date.to_i > 3650
   end
 
   def move_to_archive()
