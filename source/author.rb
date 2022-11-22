@@ -15,13 +15,3 @@ class Author
     @items.push(item) if item.is_a? Item
   end
 end
-
-aut = Author.new('lawrence', 'kusi')
-book = Book.new('bookLink inc', '2020-10-10')
-
-# book.author = aut
-# p book.author
-# p book.can_be_archived?
-
-aut.add_item(book)
-p aut.items
