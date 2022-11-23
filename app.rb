@@ -1,14 +1,18 @@
 require './source/create_module'
 require './source/storage_module'
-require './source/list_module'
+# require './source/list_module'
 require './source/instructions_module'
 require './source/author'
 require './source/book'
+require './source/game'
+require './source/source'
+require './source/label'
+require './source/genre'
 
 class App
-  include List
+  # include List
   include Create
-  include Storage
+  # include Storage
   include Instructions
 
   attr_accessor :cache, :terminate
@@ -24,6 +28,8 @@ class App
     case choice
     when '9'
       create_book
+    when '12'
+      create_game
     end
   end
 end
