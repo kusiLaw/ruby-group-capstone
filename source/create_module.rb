@@ -13,4 +13,8 @@ module Create
     @cache[:author] = [*@cache[:book], author]
     author
   end
+
+  def create_game()
+    
+  end
 end

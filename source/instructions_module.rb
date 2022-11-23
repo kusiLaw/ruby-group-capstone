@@ -23,4 +23,25 @@ module Instructions
     genre = gets.chomp
     { genre: genre }
   end
+
+  def game_instruction 
+    print 'Multiplayer: 1. True or 2. false'
+    multiplayer = gets.chomp 
+    print 'Last played at: '
+    last_played_at = gets.chomp 
+    {multiplayer: multiplayer, last_played_at: last_played_at}
+  end
+
+  def label_instruction 
+    print 'label: ' 
+    item_label = gets.chomp
+    {item_label: item_label}
+  end
+
+  def source_instructions 
+    print 'Source: '
+    item_source = gets.chomp
+    {item_source: item_source} 
+  end
+
 end
