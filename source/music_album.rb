@@ -1,9 +1,9 @@
 require '../source/item'
 class MusicAlbum < Item
-  attr_accessor :title, :on_spotify, :archived
+  attr_accessor :date, :on_spotify, :archived
 
-  def initialize(title, on_spotify)
-    super(title)
+  def initialize(date, on_spotify)
+    super(date)
     @on_spotify = on_spotify
     @archived = false
   end
@@ -11,6 +11,6 @@ class MusicAlbum < Item
   private
 
   def can_be_archived?
-    @archived = super && @on_spotify
+    @archived = super && @on_spotify = true
   end
 end
