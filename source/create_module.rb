@@ -10,7 +10,7 @@ module Create
   def create_author()
     inputs = author_instruction
     author = Author.new(inputs[:first_name], inputs[:last_name])
-    @cache[:author] = [*@cache[:book], author]
+    @cache[:author] = [*@cache[:author], author]
     author
   end
 end

@@ -4,8 +4,12 @@ class Item
   attr_accessor :date, :archived, :id
   attr_reader :genre, :author, :source, :label
 
-  def initialize(date)
-    @id = Random.rand(1..1000)
+  def initialize(date, id = -1)
+    @id = if id == -1
+            Random.rand(1..1000)
+          else
+            id
+          end
     @date = Date.parse(date)
     @archived = false
   end
