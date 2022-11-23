@@ -22,6 +22,10 @@ class App
 
   def entry(choice)
     case choice
+    when '1'
+      list_all_books
+    when '7'
+      list_all_author
     when '9'
       create_book
     end
