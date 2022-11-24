@@ -1,11 +1,14 @@
 require './source/item'
 
 class Genre
-  attr_accessor :name, :items
-  attr_reader :id
+  attr_accessor :name, :items, :id
 
-  def initialize(name)
-    @id = Random.rand(1..1000)
+  def initialize(name, id = -1)
+    @id = if id == -1
+            Random.rand(1..1000)
+          else
+            id
+          end
     @name = name
     @items = []
   end

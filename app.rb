@@ -1,5 +1,6 @@
 require './source/create_module'
-require './source/storage_module'
+require './source/write_module'
+require './source/read_data_module'
 require './source/list_module'
 require './source/instructions_module'
 require './source/author'
@@ -13,7 +14,8 @@ require './source/movie'
 class App
   include List
   include Create
-  include Storage
+  include WriteFile
+  include ReadFile
   include Instructions
 
   attr_accessor :cache, :terminate
@@ -21,6 +23,7 @@ class App
   def initialize
     @cache = {}
     restore_data
+    debug_cache
   end
 
   def entry(choice) # rubocop:disable Metrics CyclomaticComplexity
