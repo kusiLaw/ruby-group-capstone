@@ -16,7 +16,14 @@ publisher: #{book.publisher} date: #{book.date}"
 
   def list_all_games
     @cache[:game]&.each do |game| 
-      puts "Id: #{game.id} Published on: #{game.date} Multiplayer: #{game.multiplayer} last played on: #{game.last_played_at}"
+      puts "Id: #{game.id}, Published on: #{game.date}, Multiplayer: #{game.multiplayer}, last played on: #{game.last_played_at}"
+    end
+    puts ' '
+  end
+
+  def list_all_genres
+    @cache[:genre]&.each do |genre| 
+      puts "Id: #{genre.id}, Name: #{genre.name}"
     end
     puts ' '
   end
