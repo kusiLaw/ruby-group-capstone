@@ -51,4 +51,13 @@ module Instructions
 
     { item_source: item_source }
   end
+
+  def movie_instructions
+    print 'Silent: 1(true) or 2(false)'
+    silent = gets.chomp
+    print 'Watched on: '
+    watched_on = gets.chomp
+
+    { silent: silent.to_i == 1, watched_on: watched_on }
+  end
 end
