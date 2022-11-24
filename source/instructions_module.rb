@@ -51,4 +51,11 @@ module Instructions
 
     { item_source: item_source }
   end
+
+  def movie_instructions 
+    print "Silent: "
+    silent = gets.chomp 
+
+    { silent: silent}
+  end
 end
