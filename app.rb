@@ -18,10 +18,8 @@ class App
   attr_accessor :cache, :terminate
 
   def initialize
-    @cache = {
-      # book: import_books,
-      # people: import_people
-    }
+    @cache = {}
+    restore_data
   end
 
   def entry(choice)
