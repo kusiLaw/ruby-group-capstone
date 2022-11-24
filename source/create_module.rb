@@ -13,10 +13,10 @@ module Create
     @cache[:author] = [*@cache[:book], author]
     author
   end
-  
+
   def create_game()
     game_input = game_instruction
-    genre_input = genre_instruction 
+    genre_input = genre_instruction
     source_input = source_instructions
     label_input = label_instructions
 
@@ -28,6 +28,6 @@ module Create
     game.source = source
     game.label = label
     game.genre = genre
-
+    game
   end
 end
