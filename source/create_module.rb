@@ -16,18 +16,37 @@ module Create
 
   def create_game()
     game_input = game_instruction
-    genre_input = genre_instruction
-    source_input = source_instructions
-    label_input = label_instructions
-
+    source = create_source()
+    genre = create_genre()
+    label = create_label()
     game = Game.new(game_input[:published_at], game_input[:multiplayer], game_input[:last_played_at])
-    genre = Genre.new(genre_input[:genre])
-    source = Source.new(source_input[:item_source])
-    label = Label.new(label_input[:item_source], label_input[:item_color])
 
     game.source = source
     game.label = label
     game.genre = genre
+
+    @cache[:game] = [*@cache[:game], game]
     game
+  end
+
+  def create_source() 
+    source_input = source_instructions
+     source = Source.new(source_input[:item_source])
+     @cache[:source] = [*@cache[:source], source]
+     return source
+  end
+
+  def create_label()
+    label_input = label_instructions
+    label = Label.new(label_input[:item_source], label_input[:item_color])
+    @cache[:label] = [*@cache[:label], label]
+    return label
+  end
+
+  def create_genre()
+    genre_input = genre_instruction
+    genre = Genre.new(genre_input[:genre])
+    @cache[:genre] = [*@cache[:genre], genre]
+    return genre
   end
 end
