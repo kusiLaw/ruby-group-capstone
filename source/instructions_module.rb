@@ -33,22 +33,22 @@ module Instructions
     print 'Published on: '
     published_at = gets.chomp
 
-    { multiplayer: multiplayer, last_played_at: last_played_at, published_at: published_at }
+    { multiplayer: multiplayer.to_i == 1, last_played_at: last_played_at, published_at: published_at }
   end
 
   def label_instructions
     print 'label: '
     item_label = gets.chomp
+    print 'Color: '
+    item_color = gets.chomp
 
-    { item_label: item_label }
+    { item_label: item_label, item_color: item_color }
   end
 
   def source_instructions
     print 'Source: '
     item_source = gets.chomp
-    print 'Color: '
-    item_color = gets.chomp
 
-    { item_source: item_source, item_color: item_color }
+    { item_source: item_source }
   end
 end
