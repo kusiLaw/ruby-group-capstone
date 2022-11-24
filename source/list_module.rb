@@ -27,4 +27,17 @@ publisher: #{book.publisher} date: #{book.date}"
     end
     puts ' '
   end
+
+  def list_all_labels
+    @cache[:label]&.each do |label| 
+      puts "Id: #{label.id}, title: #{label.title}, color: #{label.color}"
+    end
+    puts ' '
+  end
+
+  def list_all_sources 
+    @cache[:source]&.each do |src|
+      puts "Id: #{src.id}, name: #{src.name}"
+    end
+    puts ' '
 end

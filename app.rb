@@ -28,8 +28,14 @@ class App
       list_all_books
     when '4'
       list_all_games
+    when '5'
+      list_all_genres
+    when '6'
+      list_all_labels
     when '7'
       list_all_author
+    when '8'
+      list_all_sources
     when '9'
       create_book
     when '12'
