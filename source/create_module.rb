@@ -49,4 +49,19 @@ module Create
     @cache[:genre] = [*@cache[:genre], genre]
     genre
   end
+
+  def create_movie()
+    genre = create_genre()
+    source = create_source()
+    movie_input = movie_instructions
+    label = create_label()
+
+    movie = Movie.new(movie_input[:watched_on], movie_input[:silent])
+    movie.source = source
+    movie.genre = genre 
+    movie.label = label
+
+    @cache[:movie] = [*@cache[:movie], movie]
+    movie
+  end
 end
