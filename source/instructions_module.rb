@@ -58,6 +58,6 @@ module Instructions
     print "Watched on: "
     watched_on = gets.chomp
 
-    { silent: silent.to_i == 1 ? true : false. watched_on: watched_on}
+    { silent: silent.to_i == 1 ? true : false, watched_on: watched_on}
   end
 end

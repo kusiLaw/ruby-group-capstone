@@ -42,4 +42,11 @@ publisher: #{book.publisher} date: #{book.date}"
     end
     puts ' '
   end
+
+  def list_all_movies 
+    @cache[:movie]&.each do |movie| 
+      puts "Id: #{movie.id}, Watched on: #{movie.date}, Silent: #{movie.silent}"
+    end
+    puts ' '
+  end
 end
