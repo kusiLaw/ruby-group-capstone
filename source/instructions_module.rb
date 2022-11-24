@@ -39,16 +39,16 @@ module Instructions
   def label_instructions
     print 'label: '
     item_label = gets.chomp
+    print 'Color: '
+    item_color = gets.chomp
 
-    { item_label: item_label }
+    { item_label: item_label, item_color: item_color }
   end
 
   def source_instructions
     print 'Source: '
     item_source = gets.chomp
-    print 'Color: '
-    item_color = gets.chomp
 
-    { item_source: item_source, item_color: item_color }
+    { item_source: item_source,  }
   end
 end

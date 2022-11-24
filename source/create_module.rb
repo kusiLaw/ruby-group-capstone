@@ -38,7 +38,7 @@ module Create
 
   def create_label()
     label_input = label_instructions
-    label = Label.new(label_input[:item_source], label_input[:item_color])
+    label = Label.new(label_input[:item_label], label_input[:item_color])
     @cache[:label] = [*@cache[:label], label]
     return label
   end
