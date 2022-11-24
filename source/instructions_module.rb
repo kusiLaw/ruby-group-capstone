@@ -33,7 +33,7 @@ module Instructions
     print 'Published on: '
     published_at = gets.chomp
 
-    { multiplayer: multiplayer, last_played_at: last_played_at, published_at: published_at }
+    { multiplayer: multiplayer.to_i == 1 ? true : false, last_played_at: last_played_at, published_at: published_at }
   end
 
   def label_instructions
