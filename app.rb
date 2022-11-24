@@ -8,7 +8,7 @@ require './source/game'
 require './source/source'
 require './source/label'
 require './source/genre'
-require './source/movie.rb'
+require './source/movie'
 
 class App
   include List

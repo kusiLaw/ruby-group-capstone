@@ -1,10 +1,11 @@
 require_relative './item'
 
 class Movie < Item
-  attr_accessor :silent 
-  def initialize(date, _silent)
+  attr_accessor :silent
+
+  def initialize(date, silent)
     super(date)
-    @silent = _silent
+    @silent = silent
   end
 
   private
