@@ -25,5 +25,9 @@ module Create
     source = Source.new(source_input[:item_source])
     label = Label.new(label_input[:item_source], label_input[:item_color])
 
+    game.source = source
+    game.label = label
+    game.genre = genre
+
   end
 end
