@@ -66,5 +66,7 @@ module Instructions
     release_date = gets.chomp
     print 'Is on Spotify? 1(yes) or 2(no)'
     on_spotify = gets.chomp 
+
+    { release_date: release_date, on_spotify: on_spotify.to_i == 1 ? true : false }
   end
 end
