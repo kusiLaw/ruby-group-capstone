@@ -10,7 +10,7 @@ module ReadFile
     @cache[:label] = import_label
     @cache[:book] = import_books
     @cache[:game] = import_game
-    # @cache[:movie] = import_movie
+    @cache[:movie] = import_movie
   end
 
   def import_author
@@ -87,6 +87,26 @@ module ReadFile
         game.source = source
         game.genre = genre
         game
+      end
+    else
+      []
+    end
+  end
+
+  def import_movie
+    movie_store = 'storage/movie.json'
+    if File.exist? movie_store
+      JSON.parse(File.read(movie_store)).map do |movie|
+        # find related objects object
+        label = identify_object(movie['label'], :label) # [0]
+        source = identify_object(movie['source'], :source) # [0]
+        genre = identify_object(movie['genre'], :genre) # [0]
+        # create book, assign author, and return
+        movie = Movie.new(movie['date'], movie['silent'], movie['id'])
+        movie.label = label
+        movie.source = source
+        movie.genre = genre
+        movie
       end
     else
       []

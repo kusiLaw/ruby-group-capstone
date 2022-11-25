@@ -2,7 +2,6 @@ require 'json'
 require 'fileutils'
 
 module WriteFile
-
   def store_data # rubocop:disable Metrics/CyclomaticComplexity
     FileUtils.mkdir_p('storage')
     store_books unless @cache[:book].empty?
