@@ -24,7 +24,6 @@ class App
   def initialize
     @cache = {}
     restore_data
-    debug_cache
   end
 
   def entry(choice) # rubocop:disable Metrics CyclomaticComplexity
