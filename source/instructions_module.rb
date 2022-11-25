@@ -60,4 +60,13 @@ module Instructions
 
     { silent: silent.to_i == 1, watched_on: watched_on }
   end
+
+  def music_ablum_intruction
+    print 'Release date: '
+    release_date = gets.chomp
+    print 'Is on Spotify? 1(yes) or 2(no)'
+    on_spotify = gets.chomp
+
+    { release_date: release_date, on_spotify: on_spotify.to_i == 1 }
+  end
 end

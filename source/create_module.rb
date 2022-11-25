@@ -64,4 +64,18 @@ module Create
     @cache[:movie] = [*@cache[:movie], movie]
     movie
   end
+
+  def create_music_album()
+    genre = create_genre
+    source = create_source
+    music_input = music_ablum_intruction
+
+    music_album = MusicAlbum.new(music_input[:release_date], music_input[:on_spotify])
+
+    music_album.genre = genre
+    music_album.source = source
+
+    @cache[:music_album] = [*@cache[:music_album], music_album]
+    music_album
+  end
 end

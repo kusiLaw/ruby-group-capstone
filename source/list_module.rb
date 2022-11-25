@@ -49,4 +49,11 @@ publisher: #{book.publisher} date: #{book.date}"
     end
     puts ' '
   end
+
+  def list_all_music_albums
+    @cache[:music_album]&.each do |album|
+      puts "Id: #{album.id}, Realease date: #{album.date}, Is on spotify: #{album.on_spotify}"
+    end
+    puts ' '
+  end
 end
