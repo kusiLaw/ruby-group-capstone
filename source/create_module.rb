@@ -53,8 +53,8 @@ module Create
   def create_movie()
     genre = create_genre
     source = create_source
-    movie_input = movie_instructions
     label = create_label
+    movie_input = movie_instructions
 
     movie = Movie.new(movie_input[:watched_on], movie_input[:silent])
     movie.source = source

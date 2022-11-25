@@ -2,9 +2,14 @@ class Source
   attr_accessor :name
   attr_reader :items, :id
 
-  def initialize(name)
+  def initialize(name, id = -1)
+    @id = if id == -1
+            Random.rand(400...1000)
+          else
+            id
+          end
     @name = name
-    @id = Random.rand(400...1000)
+
     @items = []
   end
 
