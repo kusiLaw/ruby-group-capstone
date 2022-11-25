@@ -2,7 +2,7 @@ require 'json'
 require 'fileutils'
 
 module WriteFile
-  def store_data # rubocop:disable Metrics/CyclomaticComplexity
+  def store_data # rubocop:disable Metrics/PerceivedComplexity, Metrics/CyclomaticComplexity
     FileUtils.mkdir_p('storage')
     store_books unless @cache[:book].empty?
     store_genre unless @cache[:genre].empty?
@@ -11,7 +11,7 @@ module WriteFile
     store_source unless @cache[:source].empty?
     store_game unless @cache[:game].empty?
     store_movie unless @cache[:movie].empty?
-    # debug_cache
+    store_music_album unless @cache[:music_album].empty?
   end
 
   def store_label
@@ -41,9 +41,7 @@ module WriteFile
   def store_author
     author_catalogue = []
     @cache[:author].each do |author|
-      author_catalogue.push({ id: author.id,
-                              first_name: author.first_name,
-                              last_name: author.last_name,
+      author_catalogue.push({ id: author.id, first_name: author.first_name, last_name: author.last_name,
                               book_id: author.items[0].id })
     end
     File.write('storage/author.json', JSON.generate(author_catalogue))
@@ -52,13 +50,8 @@ module WriteFile
   def store_books
     book_catalogue = []
     @cache[:book].each do |book|
-      book_catalogue.push({
-                            id: book.id,
-                            date: book.date,
-                            publisher: book.publisher,
-                            cover_state: book.cover_state,
-                            author_id: book.author.id
-                          })
+      book_catalogue.push({ id: book.id, date: book.date, publisher: book.publisher, cover_state: book.cover_state,
+                            author_id: book.author.id })
     end
     File.write('storage/books.json', JSON.generate(book_catalogue))
   end
@@ -66,15 +59,9 @@ module WriteFile
   def store_game
     game_catalogue = []
     @cache[:game].each do |game|
-      game_catalogue.push({
-                            id: game.id,
-                            publish_date: game.date,
-                            multiplayer: game.multiplayer,
-                            last_played_at: game.last_played_at,
-                            source: game.source.id,
-                            label: game.label.id,
-                            genre: game.genre.id
-                          })
+      game_catalogue.push({ id: game.id, publish_date: game.date, multiplayer: game.multiplayer,
+                            last_played_at: game.last_played_at, source: game.source.id,
+                            label: game.label.id, genre: game.genre.id })
     end
     File.write('storage/game.json', JSON.generate(game_catalogue))
   end
@@ -82,16 +69,19 @@ module WriteFile
   def store_movie
     movie_catalogue = []
     @cache[:movie].each do |movie|
-      movie_catalogue.push({
-                             id: movie.id,
-                             date: movie.date,
-                             silent: movie.silent,
-                             source: movie.source.id,
-                             label: movie.label.id,
-                             genre: movie.genre.id
-                           })
+      movie_catalogue.push({ id: movie.id, date: movie.date, silent: movie.silent, source: movie.source.id,
+                             label: movie.label.id, genre: movie.genre.id })
     end
     File.write('storage/movie.json', JSON.generate(movie_catalogue))
+  end
+
+  def store_music_album
+    music_catalogue = []
+    @cache[:music_album].each do |music|
+      music_catalogue.push({ id: music.id, date: music.date, on_spotify: music.on_spotify,
+                             source: music.source.id, genre: music.genre.id })
+    end
+    File.write('storage/music_album.json', JSON.generate(music_catalogue))
   end
 
   def debug_cache
