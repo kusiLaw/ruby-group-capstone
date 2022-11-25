@@ -1,8 +1,7 @@
 require 'json'
 require 'fileutils'
 
-module ReadFile
-  # update caches with the data in json file
+module ReadFile # rubocop:disable Metrics/ModuleLength
   def restore_data
     @cache[:author] = import_author
     @cache[:genre] = import_genre
@@ -11,6 +10,7 @@ module ReadFile
     @cache[:book] = import_books
     @cache[:game] = import_game
     @cache[:movie] = import_movie
+    @cache[:music_album] = import_music_album
   end
 
   def import_author
@@ -61,9 +61,7 @@ module ReadFile
     book_store = 'storage/books.json'
     if File.exist? book_store
       JSON.parse(File.read(book_store)).map do |book|
-        # find author object
         author = identify_object(book['author_id'], :author) # [0]
-        # create book, assign author, and return
         book_obj = Book.new(book['date'], book['publisher'], book['cover_state'], book['id'])
         book_obj.author = author
         book_obj
@@ -77,11 +75,9 @@ module ReadFile
     game_store = 'storage/game.json'
     if File.exist? game_store
       JSON.parse(File.read(game_store)).map do |game|
-        # find related objects object
         label = identify_object(game['label'], :label) # [0]
         source = identify_object(game['source'], :source) # [0]
         genre = identify_object(game['genre'], :genre) # [0]
-        # create book, assign author, and return
         game = Game.new(game['publish_date'], game['multiplayer'], game['last_played_at'], game['id'])
         game.label = label
         game.source = source
@@ -97,16 +93,31 @@ module ReadFile
     movie_store = 'storage/movie.json'
     if File.exist? movie_store
       JSON.parse(File.read(movie_store)).map do |movie|
-        # find related objects object
         label = identify_object(movie['label'], :label) # [0]
         source = identify_object(movie['source'], :source) # [0]
         genre = identify_object(movie['genre'], :genre) # [0]
-        # create book, assign author, and return
         movie = Movie.new(movie['date'], movie['silent'], movie['id'])
         movie.label = label
         movie.source = source
         movie.genre = genre
         movie
+      end
+    else
+      []
+    end
+  end
+
+  def import_music_album
+    music_album_store = 'storage/music_album.json'
+    if File.exist? music_album_store
+      JSON.parse(File.read(music_album_store)).map do |music|
+        source = identify_object(music['source'], :source) # [0]
+        genre = identify_object(music['genre'], :genre) # [0]
+
+        music = MusicAlbum.new(music['date'], music['on_spotify'], music['id'])
+        music.source = source
+        music.genre = genre
+        music
       end
     else
       []
