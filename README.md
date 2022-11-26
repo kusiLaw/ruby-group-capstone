@@ -3,10 +3,6 @@
 # Catalog of my things
 This is a console app that will help you to keep a record of different types of things you own: books, music albums, movies, and games. The data will be stored in JSON files but you will also prepare a database with tables structure analogical to the program's class structure.
 
-# Live Demo
-
-N/A
-
 ## Built With
 
 - Ruby
@@ -17,7 +13,10 @@ N/A
 ![](https://user-images.githubusercontent.com/84629565/201518943-67483738-265d-4219-a9a1-847d57330dcb.png)
 
 ### Video Demo
-Here is the [link](https://drive.google.com/file/d/1ZZvgwf0xALd0KErcqiN7tVynog1SeHt6/view?usp=share_link) tp the video presentation
+Here is the [link](https://drive.google.com/file/d/1ZZvgwf0xALd0KErcqiN7tVynog1SeHt6/view?usp=share_link) to the video presentation
+
+### Catalog of things screeshot
+<img width="569" alt="screenshot" src="https://user-images.githubusercontent.com/86767187/204066657-809e61b8-9b54-4152-b355-3aeaceee143a.PNG">
 
 ## Project Setup
 
